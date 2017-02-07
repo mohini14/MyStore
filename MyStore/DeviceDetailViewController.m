@@ -8,6 +8,8 @@
 
 #import "DeviceDetailViewController.h"
 
+
+
 @interface DeviceDetailViewController ()
 
 @end
@@ -57,7 +59,7 @@
 	NSManagedObjectContext *context = [self managedObjectContext];
 	
 	// Create a new managed object
-	NSManagedObjectContext *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Device" inManagedObjectContext:context];
+	NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Device" inManagedObjectContext:context];
 	[newDevice setValue:self.nameTextField.text forKey:@"name"];
 	[newDevice setValue:self.versionTextField.text forKey:@"version"];
 	[newDevice setValue:self.companyTextField.text forKey:@"company"];

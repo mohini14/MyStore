@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface DeviceDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

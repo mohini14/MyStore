@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface DeviceTableViewController : UITableViewController
+
+@property (strong) NSMutableArray *devices;
 
 @end

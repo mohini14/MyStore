@@ -323,6 +323,7 @@
 				1554471C1E49D9A200DE36E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
