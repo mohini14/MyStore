@@ -7,7 +7,7 @@
 //
 
 #import "DeviceDetailViewController.h"
-
+#import "ManagedObjectContext.h"
 
 
 @interface DeviceDetailViewController ()
@@ -31,14 +31,7 @@
 
 
 -(NSManagedObjectContext *) managedObjectContext{
-	
-	
-	NSManagedObjectContext *context=nil;
-	AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	context = [delegate managedObjectContext];
-	
-	return context;
+	return [ManagedObjectContext.getInstance managedObjectContext];
 }
 
 

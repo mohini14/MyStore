@@ -7,6 +7,7 @@
 //
 
 #import "DeviceTableViewController.h"
+#import "ManagedObjectContext.h"
 //#import "DeviceDetailViewController.h"
 
 
@@ -40,13 +41,8 @@
 }
 
 -(NSManagedObjectContext *) managedObjectContext{
-    
-    NSManagedObjectContext *context=nil;
-    id delegate=[[UIApplication sharedApplication]delegate];
-    if([delegate performSelector :@selector(managedObjectContext)]){
-        context=[delegate managedObjectContext];
-    }
-    return context;
+
+	return [ManagedObjectContext.getInstance managedObjectContext];
 }
 
 #pragma mark - Table view data source
