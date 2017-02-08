@@ -7,6 +7,8 @@
 //
 
 #import "DeviceTableViewController.h"
+//#import "DeviceDetailViewController.h"
+
 
 @interface DeviceTableViewController ()
 
@@ -15,8 +17,16 @@
 @implementation DeviceTableViewController
 
 - (void)viewDidLoad {
+	
     [super viewDidLoad];
-    
+	DeviceDetailViewController *obj;
+	if (obj.device) {
+		[obj.nameTextField setText:[obj.device valueForKey:@"name"]];
+		[obj.versionTextField setText:[obj.device valueForKey:@"version"]];
+		[obj.companyTextField setText:[obj.device valueForKey:@"company"]];
+	}
+ 
+	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -80,6 +90,37 @@
     return cell;
 }
 
+
+-(BOOL)tableview:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+	return YES;
+}
+
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+	NSManagedObjectContext *context =[self managedObjectContext];
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		// Delete object from database
+		[context deleteObject:[self.devices objectAtIndex:indexPath.row]];
+		
+		NSError *error = nil;
+		if (![context save:&error]) {
+			NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+			return;
+		}
+		
+		// Remove device from table view
+		[self.devices removeObjectAtIndex:indexPath.row];
+		[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	}
+	
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([[segue identifier] isEqualToString:@"Update_Device"]) {
+		NSManagedObject *selectedDevice = [self.devices objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+		DeviceDetailViewController *destViewController = segue.destinationViewController;
+		destViewController.device = selectedDevice;
+	}
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];

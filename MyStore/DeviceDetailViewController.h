@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "DeviceTableViewController.h"
 
 @interface DeviceDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *versionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companyTextField;
+@property (strong) NSManagedObject *device;
 
 
 @end
