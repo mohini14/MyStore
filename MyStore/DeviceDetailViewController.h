@@ -10,10 +10,10 @@
 #import "AppDelegate.h"
 
 @interface DeviceDetailViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *versionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companyTextField;
-- (IBAction)cancelButton:(id)sender;
 
-- (IBAction)saveButton:(id)sender;
+
 @end

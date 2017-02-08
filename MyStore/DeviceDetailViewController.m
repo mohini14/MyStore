@@ -31,10 +31,10 @@
 	
 	
 	NSManagedObjectContext *context=nil;
-	id delegate=[[UIApplication sharedApplication]delegate];
-	if([delegate performSelector:@selector(managedObjectContext)]){
-		context=[delegate managedObjectContext];
-	}
+	AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	context = [delegate managedObjectContext];
+	
 	return context;
 }
 
@@ -51,9 +51,6 @@
 }
 */
 
-- (IBAction)cancelButton:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (IBAction)saveButton:(id)sender {
 	NSManagedObjectContext *context = [self managedObjectContext];
@@ -71,5 +68,7 @@
 	}
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)cancelButton:(id)sender {
 }
 @end
