@@ -3,10 +3,10 @@
 // Copyright (c) 2017 Mohini Sindhu . All rights reserved.
 //
 
-#import "ManagedObjectContext.h"
+#import "DataManager.h"
 
 
-@implementation ManagedObjectContext {
+@implementation DataManager {
 
 }
 
@@ -89,11 +89,11 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-+ (ManagedObjectContext *)getInstance {
-    static ManagedObjectContext *_context = nil;
++ (DataManager *)getInstance {
+    static DataManager *_context = nil;
     @synchronized (self) {
         if(_context == nil)
-            _context = ManagedObjectContext.new;
+            _context = DataManager.new;
     }
     return _context;
 }

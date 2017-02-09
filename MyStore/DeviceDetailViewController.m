@@ -7,7 +7,7 @@
 //
 
 #import "DeviceDetailViewController.h"
-#import "ManagedObjectContext.h"
+#import "DataManager.h"
 
 
 @interface DeviceDetailViewController ()
@@ -31,7 +31,7 @@
 
 
 -(NSManagedObjectContext *) managedObjectContext{
-	return [ManagedObjectContext.getInstance managedObjectContext];
+	return [DataManager.getInstance managedObjectContext];
 }
 
 

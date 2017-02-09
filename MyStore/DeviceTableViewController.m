@@ -7,7 +7,7 @@
 //
 
 #import "DeviceTableViewController.h"
-#import "ManagedObjectContext.h"
+#import "DataManager.h"
 //#import "DeviceDetailViewController.h"
 
 
@@ -42,7 +42,7 @@
 
 -(NSManagedObjectContext *) managedObjectContext{
 
-	return [ManagedObjectContext.getInstance managedObjectContext];
+	return [DataManager.getInstance managedObjectContext];
 }
 
 #pragma mark - Table view data source
